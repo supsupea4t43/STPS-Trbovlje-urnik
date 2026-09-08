@@ -7,7 +7,7 @@ Zažene se kot samostojno okno (brez brskalniških zavihkov in orodnih vrstic), 
 
 **Namestitev**
 
-1. Code → Download ZIP, razširi mapo
+1. Code → Download ZIP, exstraktiraj mapo
 2. Dvoklikni `Namesti.bat`. Če Pythona še ni, ga namesti sam.
 3. Tipka Windows, napiši `Urnik STPŠ`, desni klik → Pripni na začetni zaslon
 
