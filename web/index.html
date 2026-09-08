@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Urnik STPŠ</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <select id="classSelect" aria-label="Oddelek"></select>
+
+  <!-- Gumb je levo, da se navigacija po tednih ob njegovem pojavu ne premakne. -->
+  <button class="pill" id="weekToday" title="Ta teden (T)" hidden>Ta teden</button>
+
+  <div class="week">
+    <button class="nav-btn" id="weekPrev" title="Prejšnji teden (←)">‹</button>
+    <span class="week-label"><strong id="weekName">—</strong><span id="weekRange"></span></span>
+    <button class="nav-btn" id="weekNext" title="Naslednji teden (→)">›</button>
+  </div>
+</header>
+
+<div id="banner" class="banner" hidden></div>
+
+<main>
+  <div class="grid-wrap"><table id="grid" class="grid"></table></div>
+</main>
+
+<footer class="legend">
+  <span class="lg"><i class="badge b-nad">NAD</i> Nadomeščanje</span>
+  <span class="lg"><i class="badge b-zap">ZAP</i> Zaposlitev</span>
+  <span class="lg"><i class="badge b-odp">ODP</i> Odpadla ura</span>
+  <span class="lg"><i class="badge b-dog">DOG</i> Dogodek</span>
+  <span class="lg"><i class="badge b-grp">2</i> Več skupin</span>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

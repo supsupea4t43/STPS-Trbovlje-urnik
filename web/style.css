@@ -1,0 +1,242 @@
+/* STPS Urnik - vmesnik */
+
+:root {
+  --bg: #f4f5f8;
+  --panel: #ffffff;
+  --panel-2: #fbfbfd;
+  --line: #e0e3ea;
+  --line-soft: #eceef3;
+  --ink: #1a1d24;
+  --ink-2: #5b6270;
+  --ink-3: #8a91a0;
+  --accent: #1f6feb;
+  --accent-soft: #e8f0fe;
+
+  --nad: #b45309;      --nad-bg: #fef3c7;  --nad-line: #f2c063;
+  --zap: #6d28d9;      --zap-bg: #ede9fe;  --zap-line: #c0aef4;
+  --odp: #b91c1c;      --odp-bg: #fee2e2;  --odp-line: #f2a9a9;
+  --dog: #047857;      --dog-bg: #d1fae5;  --dog-line: #7cd6b2;
+
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(17, 24, 39, .06), 0 4px 14px rgba(17, 24, 39, .05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14161b;
+    --panel: #1c1f26;
+    --panel-2: #21252d;
+    --line: #2e333d;
+    --line-soft: #262a33;
+    --ink: #e8eaf0;
+    --ink-2: #a3aab8;
+    --ink-3: #767e8d;
+    --accent: #5b9bff;
+    --accent-soft: #1b2a44;
+
+    --nad: #fbbf24;    --nad-bg: #3a2c0c;  --nad-line: #7a5a13;
+    --zap: #c4b5fd;    --zap-bg: #2a2143;  --zap-line: #4c3f7a;
+    --odp: #fca5a5;    --odp-bg: #3d1c1c;  --odp-line: #7a3232;
+    --dog: #6ee7b7;    --dog-bg: #12362a;  --dog-line: #26644c;
+
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 4px 14px rgba(0, 0, 0, .28);
+  }
+}
+
+* { box-sizing: border-box; }
+
+/* Naravni tok postavitve: visina dokumenta je vsebina, kar omogoca,
+   da okno izmerimo in mu prilagodimo velikost (glej fitWindow v app.js). */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 14px/1.45 "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --------------------------------------------------------------- glava */
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+
+select {
+  font: inherit;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+select:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.week { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+.week-label { display: flex; align-items: baseline; gap: 7px; }
+.week-label strong { font-size: 14px; }
+.week-label span { color: var(--ink-3); font-size: 12.5px; white-space: nowrap; }
+
+.nav-btn {
+  font: inherit; font-size: 17px; line-height: 1;
+  width: 26px; height: 26px;
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--ink-2);
+  border-radius: 7px;
+  cursor: pointer;
+}
+.nav-btn:hover { color: var(--ink); border-color: var(--ink-3); }
+
+.pill {
+  font: inherit; font-size: 12px;
+  padding: 4px 10px;
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.banner {
+  padding: 6px 14px;
+  background: var(--nad-bg);
+  color: var(--nad);
+  border-bottom: 1px solid var(--nad-line);
+  font-size: 12.5px;
+}
+
+/* --------------------------------------------------------------- mreza */
+
+main { padding: 12px 14px; }
+
+.grid-wrap {
+  overflow-x: auto;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Fiksna postavitev: vsi dnevi enako siroki, ne glede na dolzino besedila. */
+.grid { border-collapse: collapse; width: 100%; table-layout: fixed; }
+
+.grid th, .grid td {
+  border-bottom: 1px solid var(--line-soft);
+  border-right: 1px solid var(--line-soft);
+  vertical-align: top;
+  padding: 0;
+}
+.grid tr:last-child th, .grid tr:last-child td { border-bottom: 0; }
+.grid th:last-child, .grid td:last-child { border-right: 0; }
+
+.grid thead th {
+  background: var(--panel-2);
+  border-bottom: 1px solid var(--line);
+  padding: 6px 9px;
+  text-align: left;
+  font-size: 12.5px;
+}
+.grid thead th small { display: block; color: var(--ink-3); font-weight: 400; font-size: 11.5px; }
+
+.grid .h-cell {
+  width: 78px;
+  padding: 6px 9px;
+  background: var(--panel-2);
+  color: var(--ink-3);
+  font-weight: 500;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.grid .h-cell b { display: block; color: var(--ink-2); font-size: 12.5px; }
+.grid .h-cell span { font-size: 11px; }
+
+/* Danasnji dan oznacimo z robom, ne s podlago - podlaga se je stapljala
+   z ozadjem samih ur. */
+.grid thead th.is-today {
+  color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: inset 2px 0 0 var(--accent), inset -2px 0 0 var(--accent), inset 0 -2px 0 var(--accent);
+}
+.grid td.col-today {
+  box-shadow: inset 2px 0 0 var(--accent), inset -2px 0 0 var(--accent);
+}
+.grid tr:last-child td.col-today { box-shadow: inset 2px 0 0 var(--accent), inset -2px 0 0 var(--accent), inset 0 -2px 0 var(--accent); }
+
+/* Celica zapolni vso visino - pri urah, zdruzenih cez vec vrstic, se okvir
+   raztegne cez cel blok namesto da bi spodaj ostal prazen prostor.
+   "height: 1px" na celici je znan prijem: visina celice s tem postane
+   dolocena, da se odstotek pri otroku sploh izracuna. Vrstice se zaradi tega
+   ne skrcijo - visino jim se vedno narekuje vsebina. */
+.grid td { height: 1px; }
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 5px 7px;
+  min-height: 38px;
+  height: 100%;
+}
+
+.blk {
+  flex: 1 1 auto;
+  border-left: 3px solid var(--line);
+  border-radius: 5px;
+  padding: 4px 7px;
+  background: var(--panel-2);
+}
+.blk-top { display: flex; align-items: center; gap: 6px; }
+.blk-code { font-weight: 700; font-size: 13px; overflow-wrap: anywhere; }
+.blk-sub { color: var(--ink-3); font-size: 11.5px; margin-top: 1px; overflow-wrap: anywhere; }
+.blk.alt { opacity: .8; }
+.blk.is-off .blk-code { text-decoration: line-through; }
+
+/* barve stanj */
+.s-nadomescanje  { background: var(--nad-bg); border-left-color: var(--nad-line); }
+.s-zaposlitev    { background: var(--zap-bg); border-left-color: var(--zap-line); }
+.s-odpadla-ura,
+.s-ni-bilo-pouka { background: var(--odp-bg); border-left-color: var(--odp-line); }
+.s-dogodek       { background: var(--dog-bg); border-left-color: var(--dog-line); }
+
+.badge {
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  padding: 1px 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.b-nad { background: var(--nad-bg); color: var(--nad); box-shadow: inset 0 0 0 1px var(--nad-line); }
+.b-zap { background: var(--zap-bg); color: var(--zap); box-shadow: inset 0 0 0 1px var(--zap-line); }
+.b-odp { background: var(--odp-bg); color: var(--odp); box-shadow: inset 0 0 0 1px var(--odp-line); }
+.b-dog { background: var(--dog-bg); color: var(--dog); box-shadow: inset 0 0 0 1px var(--dog-line); }
+.b-grp { background: var(--accent-soft); color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+
+/* -------------------------------------------------------------- legenda */
+
+.legend {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  padding: 0 14px 10px;
+  color: var(--ink-3);
+  font-size: 11.5px;
+}
+.lg { display: inline-flex; align-items: center; gap: 5px; }
+
+/* Zapis mora biti natancnejsi od ".grid td { padding: 0 }". */
+.grid td.empty {
+  padding: 28px 16px;
+  height: auto;
+  text-align: center;
+  color: var(--ink-3);
+}
