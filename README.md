@@ -5,6 +5,8 @@ Namizna aplikacija za Windows, ki prikazuje tedenski urnik [STPŠ Trbovlje](http
 
 Zažene se kot samostojno okno (brez brskalniških zavihkov in orodnih vrstic), veliko
 
+<img width="987" height="734" alt="image" src="https://github.com/user-attachments/assets/002e87a1-3d2b-4ebb-b3d3-82c75ebb2b0a" />
+
 **Namestitev**
 
 1. Code → Download ZIP, exstraktiraj mapo
